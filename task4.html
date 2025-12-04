@@ -124,50 +124,7 @@
     <button class="generate-btn" onclick="generatePassword()">Generate</button>
 </div>
 
-<script>
-    const lengthSlider = document.getElementById('lengthSlider');
-    const lengthValue = document.getElementById('lengthValue');
-    const passwordBox = document.getElementById('password');
 
-    const lowercase = "abcdefghijklmnopqrstuvwxyz";
-    const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const numbers = "0123456789";
-    const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>/?";
-
-    function updateLength() {
-        lengthValue.textContent = lengthSlider.value;
-    }
-
-    function generatePassword() {
-        let charSet = "";
-        if (document.getElementById('lowercase').checked) charSet += lowercase;
-        if (document.getElementById('uppercase').checked) charSet += uppercase;
-        if (document.getElementById('numbers').checked) charSet += numbers;
-        if (document.getElementById('symbols').checked) charSet += symbols;
-
-        if (charSet === "") {
-            alert("Select at least one character type!");
-            return;
-        }
-
-        let password = "";
-        const length = parseInt(lengthSlider.value);
-
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * charSet.length);
-            password += charSet[randomIndex];
-        }
-
-        passwordBox.value = password;
-    }
-
-    function copyPassword() {
-        passwordBox.select();
-        passwordBox.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(passwordBox.value);
-        alert("Password copied to clipboard!");
-    }
-</script>
 
 </body>
 </html>
